@@ -1,0 +1,60 @@
+yarn init -y
+
+node index.js
+
+sudo -u postgres psql
+
+# Verificar a porta usada pelo postgres
+SELECT *
+FROM pg_settings
+WHERE name = 'port';
+
+# Create database
+create database library;
+
+# Lista databases
+\l
+
+# Use database library
+\c library
+
+# Create table
+create table books(
+  section int,
+  title text,
+  author text
+);
+
+# Lista tabelas
+\dt
+
+# Insert dados
+insert into books values (1, 'Foundation', 'Issac Asimov');
+
+insert into books values
+  (2, 'Digital Fortress', 'Dan Brown'),
+  (3, 'World War z', 'Max Brooks');
+
+# Select dados
+select * from books;
+
+# Create table
+create table users(
+  username text,
+  password text
+);
+
+# Insert dados
+insert into users values
+  ('joe', 'joe123'),
+  ('ryan', 'ryan123'),
+  ('cameron', 'cameron123');
+
+# Select dados
+select * from users;
+
+# Sair do postgres shell
+\q
+
+# Biblioteca do postgres para nodejs
+yarn add pg
